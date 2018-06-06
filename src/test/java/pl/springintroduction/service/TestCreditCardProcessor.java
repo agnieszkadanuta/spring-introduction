@@ -6,7 +6,9 @@ import pl.springintroduction.model.CreditCard;
 import java.math.BigDecimal;
 
 public class TestCreditCardProcessor implements CreditCardProcessor {
+
+
     public ChargeResult charge(CreditCard creditCard, BigDecimal amount) {
-        return null;
+        return new ChargeResult(true, "");
     }
 }
