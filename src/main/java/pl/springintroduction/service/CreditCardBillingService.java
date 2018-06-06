@@ -1,5 +1,7 @@
 package pl.springintroduction.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import pl.springintroduction.exception.UnreachableException;
 import pl.springintroduction.factory.CreditCardProcessorFactory;
 import pl.springintroduction.factory.TransactionLogfactory;
@@ -8,12 +10,16 @@ import pl.springintroduction.model.CreditCard;
 import pl.springintroduction.model.PizzaOrder;
 import pl.springintroduction.model.Receipt;
 
+@Component
 public class CreditCardBillingService implements BillingService {
 
     private final CreditCardProcessor creditCardProcessor;
     private final TransactionLog transactionLog;
 
+    @Autowired
+    //oznacza, że przy wywołaniu konstruktora wywoływane są Beany określonych typów
     public CreditCardBillingService(CreditCardProcessor creditCardProcessor, TransactionLog transactionLog) {
+        System.out.println("CreditCardBillingservice");
         this.creditCardProcessor = creditCardProcessor;
         this.transactionLog = transactionLog;
     }
