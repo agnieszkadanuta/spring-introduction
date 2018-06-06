@@ -1,5 +1,8 @@
 package pl.springintroduction;
 
+import pl.springintroduction.model.CreditCard;
+import pl.springintroduction.model.PizzaOrder;
+import pl.springintroduction.model.Receipt;
 import pl.springintroduction.service.BillingService;
 import pl.springintroduction.service.CreditCardBillingService;
 

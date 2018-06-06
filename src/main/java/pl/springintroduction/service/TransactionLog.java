@@ -1,9 +1,11 @@
 package pl.springintroduction.service;
 
-public class TransactionLog {
-    public void logChargeResult(ChargeResult result) {
-    }
+import pl.springintroduction.exception.UnreachableException;
+import pl.springintroduction.model.ChargeResult;
 
-    public void logConnectException(UnreachableException e) {
-    }
+public interface TransactionLog {
+
+    void logChargeResult(ChargeResult result);
+
+    void logConnectException(UnreachableException e);
 }

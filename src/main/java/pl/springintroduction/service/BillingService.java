@@ -1,5 +1,9 @@
 package pl.springintroduction.service;
 
+import pl.springintroduction.model.CreditCard;
+import pl.springintroduction.model.PizzaOrder;
+import pl.springintroduction.model.Receipt;
+
 public interface BillingService {
 
     /**
@@ -10,6 +14,6 @@ public interface BillingService {
      *      receipt will be successful. Otherwise, the receipt will contain a
      *      decline note describing why the charge failed.
      */
-    Receipt chargeOrder(PizzaOrder order, CreditCard creditCard);
+
 
 }

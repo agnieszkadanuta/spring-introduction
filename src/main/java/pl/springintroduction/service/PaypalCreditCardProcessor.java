@@ -1,4 +1,12 @@
 package pl.springintroduction.service;
 
-public class PaypalCreditCardProcessor extends CreditCardProcessor {
+import pl.springintroduction.model.ChargeResult;
+import pl.springintroduction.model.CreditCard;
+
+import java.math.BigDecimal;
+
+public class PaypalCreditCardProcessor implements CreditCardProcessor {
+    public ChargeResult charge(CreditCard creditCard, BigDecimal amount) {
+        return null;
+    }
 }

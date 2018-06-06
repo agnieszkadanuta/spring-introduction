@@ -1,8 +1,11 @@
 package pl.springintroduction.service;
 
+import pl.springintroduction.model.ChargeResult;
 import pl.springintroduction.model.CreditCard;
 
-public class CreditCardProcessor {
-    public ChargeResult charge(CreditCard creditCard, Object amount) {
-    }
+import java.math.BigDecimal;
+
+public interface CreditCardProcessor {
+
+    ChargeResult charge(CreditCard creditCard, BigDecimal amount);
 }
