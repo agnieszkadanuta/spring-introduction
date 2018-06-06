@@ -1,4 +1,4 @@
-package pl.dominisz.springintroduction.service;
+package pl.springintroduction.service;
 
 import org.junit.Test;
 

@@ -1,7 +1,7 @@
-package pl.dominisz.springintroduction;
+package pl.springintroduction;
 
-import pl.dominisz.springintroduction.service.BillingService;
-import pl.dominisz.springintroduction.service.CreditCardBillingService;
+import pl.springintroduction.service.BillingService;
+import pl.springintroduction.service.CreditCardBillingService;
 
 public class Application {
 

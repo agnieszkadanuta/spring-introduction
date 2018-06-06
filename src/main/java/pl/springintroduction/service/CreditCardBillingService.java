@@ -1,4 +1,8 @@
-package pl.dominisz.springintroduction.service;
+package pl.springintroduction.service;
+
+import pl.springintroduction.model.CreditCard;
+import pl.springintroduction.model.PizzaOrder;
+import pl.springintroduction.model.Receipt;
 
 public class CreditCardBillingService implements BillingService {
 
