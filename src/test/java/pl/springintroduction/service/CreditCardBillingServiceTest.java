@@ -15,11 +15,10 @@ public class CreditCardBillingServiceTest {
     @Test
     public void shouldCreateReceiptForProperOrder() {
 
-        CreditCardProcessorFactory.setInstance(new TestCreditCardProcessor());
-        TransactionLogfactory.setInstance(new TestTransactionLog());
+        CreditCardProcessor creditCardProcessor = new TestCreditCardProcessor();
+        TransactionLog transactionLog = new TestTransactionLog();
 
-        CreditCardBillingService creditCardBillingService = new CreditCardBillingService();
-
+        CreditCardBillingService creditCardBillingService = new CreditCardBillingService(creditCardProcessor, transactionLog);
         PizzaOrder pizzaOrder = new PizzaOrder("description", BigDecimal.TEN);
         CreditCard creditCard = new CreditCard();
         Receipt actualReceipt = creditCardBillingService.chargeOrder(pizzaOrder, creditCard);

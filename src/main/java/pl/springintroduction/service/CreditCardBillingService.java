@@ -10,13 +10,18 @@ import pl.springintroduction.model.Receipt;
 
 public class CreditCardBillingService implements BillingService {
 
+    private final CreditCardProcessor creditCardProcessor;
+    private final TransactionLog transactionLog;
+
+    public CreditCardBillingService(CreditCardProcessor creditCardProcessor, TransactionLog transactionLog) {
+        this.creditCardProcessor = creditCardProcessor;
+        this.transactionLog = transactionLog;
+    }
+
     public Receipt chargeOrder(PizzaOrder order, CreditCard creditCard) {
 
-        CreditCardProcessor processor = CreditCardProcessorFactory.getInstance();
-        TransactionLog transactionLog = TransactionLogfactory.getInstance();
-
         try {
-            ChargeResult result = processor.charge(creditCard, order.getAmount());
+            ChargeResult result = creditCardProcessor.charge(creditCard, order.getAmount());
             transactionLog.logChargeResult(result);
 
             return result.isSuccessful()
