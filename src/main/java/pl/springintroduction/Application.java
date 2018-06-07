@@ -1,5 +1,7 @@
 package pl.springintroduction;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,25 +14,11 @@ import pl.springintroduction.service.*;
 
 import java.math.BigDecimal;
 
-@ComponentScan
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {
-        //obiekty zostaną utworzone w kontenerze Springa
-       /* CreditCardProcessor creditCardProcessor = new PaypalCreditCardProcessor();
-        TransactionLog transactionLog = new DatabaseTransactionLog();*/
-
-       //trzeba utworzyć applicationContext
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Application.class);
-
-        BillingService billingService = applicationContext.getBean(CreditCardBillingService.class);
-
-        PizzaOrder pizzaOrder = new PizzaOrder("Pizza Margherita", new BigDecimal(25));
-        CreditCard creditCard = new CreditCard();
-
-        Receipt receipt = ((CreditCardBillingService) billingService).chargeOrder(pizzaOrder, creditCard);
-
-        System.out.println(receipt);
+        SpringApplication.run(Application.class);
     }
 
 }
