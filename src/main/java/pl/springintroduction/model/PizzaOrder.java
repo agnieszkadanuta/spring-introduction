@@ -1,22 +1,19 @@
 package pl.springintroduction.model;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class PizzaOrder {
 
+    private Long id;
     private String description;
     private BigDecimal amount;
 
-    public PizzaOrder(String description, BigDecimal amount) {
-        this.description = description;
-        this.amount = amount;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
 }
