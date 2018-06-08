@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,6 +14,9 @@ import java.math.BigDecimal;
 public class PizzaOrder {
 
     private Long id;
+    private LocalDateTime orderDateTime;
+    private LocalDateTime completeDateTime;
+    private boolean completed;
     private String description;
     private BigDecimal amount;
 

@@ -5,6 +5,7 @@ import pl.springintroduction.exception.PizzaOrderNotFoundException;
 import pl.springintroduction.model.PizzaOrder;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +16,9 @@ public class InMemoryPizzaOrderRepository implements PizzaOrderRepository {
 
     public InMemoryPizzaOrderRepository() {
         pizzaOrders = new ArrayList<>();
-        pizzaOrders.add(new PizzaOrder(1L, "Pizza Margherita", new BigDecimal(25)));
-        pizzaOrders.add(new PizzaOrder(2L, "Pizza Neapolitana", new BigDecimal(20)));
-        pizzaOrders.add(new PizzaOrder(3L, "Pizza Spicy", new BigDecimal(30)));
+        pizzaOrders.add(new PizzaOrder(1L, LocalDateTime.now(),null, false, "Pizza Margherita", new BigDecimal(25)));
+        pizzaOrders.add(new PizzaOrder(2L, LocalDateTime.now(), null, false,"Pizza Neapolitana", new BigDecimal(20)));
+        pizzaOrders.add(new PizzaOrder(3L, LocalDateTime.now(), null, false ,"Pizza Spicy", new BigDecimal(30)));
     }
 
     public List<PizzaOrder> findAll(){
@@ -32,9 +33,11 @@ public class InMemoryPizzaOrderRepository implements PizzaOrderRepository {
 
     @Override
     public PizzaOrder save(PizzaOrder pizzaOrder) {
+        if(pizzaOrder.getId() == null){
         Long maxId = pizzaOrders.stream().mapToLong(PizzaOrder::getId).max().orElse(1);
         pizzaOrder.setId(maxId + 1);
         pizzaOrders.add(pizzaOrder);
+        }
         return pizzaOrder;
     }
 }

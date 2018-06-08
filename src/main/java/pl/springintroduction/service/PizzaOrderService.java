@@ -11,4 +11,6 @@ public interface PizzaOrderService {
     PizzaOrder findById(Long id);
 
     PizzaOrder create(PizzaOrder pizzaOrder);
+
+    PizzaOrder completeOrder(Long id);
 }
