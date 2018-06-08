@@ -13,4 +13,8 @@ public interface PizzaOrderService {
     PizzaOrder create(PizzaOrder pizzaOrder);
 
     PizzaOrder completeOrder(Long id);
+
+    List<PizzaOrder> searchPizzaOrders(boolean completed);
+
+    void deleteById(Long id);
 }

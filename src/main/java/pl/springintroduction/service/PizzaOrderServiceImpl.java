@@ -2,13 +2,10 @@ package pl.springintroduction.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.springintroduction.controller.PizzaOrderController;
 import pl.springintroduction.model.PizzaOrder;
 import pl.springintroduction.repository.PizzaOrderRepository;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,5 +36,15 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
         pizzaOrder.setCompleted(true);
         pizzaOrder.setCompleteDateTime(LocalDateTime.now());
         return pizzaOrderRepository.save(pizzaOrder);
+    }
+
+    @Override
+    public List<PizzaOrder> searchPizzaOrders(boolean completed) {
+        return pizzaOrderRepository.searchByCompleted(completed);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        pizzaOrderRepository.delete(id);
     }
 }

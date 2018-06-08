@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class InMemoryPizzaOrderRepository implements PizzaOrderRepository {
@@ -39,5 +40,16 @@ public class InMemoryPizzaOrderRepository implements PizzaOrderRepository {
         pizzaOrders.add(pizzaOrder);
         }
         return pizzaOrder;
+    }
+
+    @Override
+    public List<PizzaOrder> searchByCompleted(boolean completed) {
+        return pizzaOrders.stream().filter(pizzaOrder -> pizzaOrder.isCompleted() == completed).collect(Collectors.toList());
+    }
+
+    @Override
+    public void delete(Long id) {
+        pizzaOrders.stream().filter(pizzaOrder -> pizzaOrder.getId()
+                .equals(id)).findFirst().ifPresent(pizzaOrder -> pizzaOrders.remove(pizzaOrder));
     }
 }
