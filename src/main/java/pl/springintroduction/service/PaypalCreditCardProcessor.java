@@ -9,12 +9,8 @@ import java.math.BigDecimal;
 @Component
 public class PaypalCreditCardProcessor implements CreditCardProcessor {
 
-    public PaypalCreditCardProcessor() {
-        System.out.println("PayPalCreditCardProcessor");
-    }
-
     public ChargeResult charge(CreditCard creditCard, BigDecimal amount) {
-        return null;
+        return new ChargeResult(true, "");
         //obciążenie karty poprzez system PayPal
     }
 }

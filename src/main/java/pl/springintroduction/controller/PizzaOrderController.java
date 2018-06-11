@@ -4,8 +4,10 @@ package pl.springintroduction.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.springintroduction.converter.PizzaOrderConverter;
+import pl.springintroduction.model.CreditCard;
 import pl.springintroduction.model.PizzaOrder;
 import pl.springintroduction.model.PizzaOrderDTO;
+import pl.springintroduction.model.Receipt;
 import pl.springintroduction.service.PizzaOrderService;
 
 import java.util.List;
@@ -48,6 +50,11 @@ public class PizzaOrderController {
     @PutMapping(path="/{id}/completed")
     public PizzaOrder completeOrder(@PathVariable Long id){
         return pizzaOrderService.completeOrder(id);
+    }
+
+    @PutMapping(path="/{id}/charge")
+    public Receipt chargeOrder(@PathVariable Long id, @RequestBody CreditCard creditCard){
+        return pizzaOrderService.chargeOrder(id, creditCard);
     }
 
     @RequestMapping(path = "/", method = RequestMethod.POST) //jeśli chcemy inną metodę, trzeba dodać 'method'

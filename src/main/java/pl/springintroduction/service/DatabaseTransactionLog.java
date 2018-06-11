@@ -1,18 +1,21 @@
 package pl.springintroduction.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pl.springintroduction.exception.UnreachableException;
 import pl.springintroduction.model.ChargeResult;
+import pl.springintroduction.repository.ChargeResultRepository;
 
-@Component
+@Service
 public class DatabaseTransactionLog implements TransactionLog {
 
-    public DatabaseTransactionLog() {
-        System.out.println("DataBaseTransactionLog");
+    private final ChargeResultRepository chargeResultRepository;
+
+    public DatabaseTransactionLog(ChargeResultRepository chargeResultRepository) {
+        this.chargeResultRepository = chargeResultRepository;
     }
 
     public void logChargeResult(ChargeResult result) {
-        //zapisz do bazy danych
+        chargeResultRepository.save(result);
 
     }
 

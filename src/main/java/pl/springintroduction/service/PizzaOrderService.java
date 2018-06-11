@@ -1,6 +1,8 @@
 package pl.springintroduction.service;
 
+import pl.springintroduction.model.CreditCard;
 import pl.springintroduction.model.PizzaOrder;
+import pl.springintroduction.model.Receipt;
 
 import java.util.List;
 
@@ -17,4 +19,6 @@ public interface PizzaOrderService {
     List<PizzaOrder> searchPizzaOrders(boolean completed);
 
     void deleteById(Long id);
+
+    Receipt chargeOrder(Long id, CreditCard creditCard);
 }
