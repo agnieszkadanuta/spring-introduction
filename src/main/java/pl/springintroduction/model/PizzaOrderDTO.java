@@ -5,12 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class PizzaOrderDTO {
 
-    private String description;
+    private List<String> items;
     private BigDecimal amount;
 }

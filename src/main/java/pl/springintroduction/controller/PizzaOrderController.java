@@ -56,7 +56,7 @@ public class PizzaOrderController {
         return pizzaOrderService.create(pizzaOrder);
     }
 
-    @GetMapping("/")
+    @GetMapping("/search")
     public List<PizzaOrder> searchPizzaOrders(@RequestParam boolean completed){
         return pizzaOrderService.searchPizzaOrders(completed);
     }

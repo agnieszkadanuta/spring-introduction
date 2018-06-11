@@ -2,6 +2,7 @@ package pl.springintroduction.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.springintroduction.exception.PizzaOrderNotFoundException;
 import pl.springintroduction.model.PizzaOrder;
 import pl.springintroduction.repository.PizzaOrderRepository;
 
@@ -21,7 +22,7 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
 
     @Override
     public PizzaOrder findById(Long id) {
-        return pizzaOrderRepository.findById(id);
+        return pizzaOrderRepository.findById(id).orElseThrow(()-> new PizzaOrderNotFoundException());
     }
 
     @Override
@@ -32,7 +33,7 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
 
     @Override
     public PizzaOrder completeOrder(Long id) {
-        PizzaOrder pizzaOrder = pizzaOrderRepository.findById(id);
+        PizzaOrder pizzaOrder = pizzaOrderRepository.findById(id).orElseThrow(()-> new PizzaOrderNotFoundException());
         pizzaOrder.setCompleted(true);
         pizzaOrder.setCompleteDateTime(LocalDateTime.now());
         return pizzaOrderRepository.save(pizzaOrder);
@@ -40,11 +41,11 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
 
     @Override
     public List<PizzaOrder> searchPizzaOrders(boolean completed) {
-        return pizzaOrderRepository.searchByCompleted(completed);
+        return pizzaOrderRepository.findByCompleted(completed);
     }
 
     @Override
     public void deleteById(Long id) {
-        pizzaOrderRepository.delete(id);
+        pizzaOrderRepository.deleteById(id);
     }
 }
