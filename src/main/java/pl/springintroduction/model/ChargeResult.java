@@ -1,12 +1,17 @@
 package pl.springintroduction.model;
 
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class ChargeResult {
 
     @Id
@@ -14,8 +19,8 @@ public class ChargeResult {
     private Long id;
 
     private LocalDateTime chargeDateTime;
-    private final boolean successful;
-    private final String declineMessage;
+    private boolean successful;
+    private String declineMessage;
 
     public ChargeResult(boolean successful, String declineMessage) {
         this.chargeDateTime = LocalDateTime.now();
